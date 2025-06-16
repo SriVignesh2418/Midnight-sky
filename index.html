@@ -68,13 +68,17 @@
       
     <!-- Footer -->
     <footer style="
-      text-align: center;
+      
+       text-align: center;
   margin-top: 50px;
   font-size: 0.9em;
   color: #ccc;
   font-family: 'Poppins', sans-serif;
   opacity: 0;
+  padding: 1rem;
+  box-sizing: border-box;
   animation: fadeIn 2s ease-in-out forwards;
+  word-wrap: break-word;
 ">
       © 2025 Sri Vignesh. All rights reserved.
     </footer>
@@ -85,6 +89,14 @@
       opacity: 1;
     }
   }
+
+   @media (max-width: 600px) {
+    footer {
+      font-size: 0.8em;
+      padding: 0.5rem;
+      margin-top: 30px;
+    }
+   }
 </style>
   </div>
 </div>
