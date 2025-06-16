@@ -1,16 +1,16 @@
-// Star field canvas setup
-const canvas = document.getElementById('starCanvas');
-const ctx = canvas.getContext('2d');
+// ---------------------------
+// 🌟 Twinkling Starfield
+// ---------------------------
+const starCanvas = document.getElementById('starCanvas');
+const ctx = starCanvas.getContext('2d');
 let width, height;
 let stars = [];
 
-function resize() {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
+function resizeStars() {
+  width = starCanvas.width = window.innerWidth;
+  height = starCanvas.height = window.innerHeight;
+  createStars(300);
 }
-
-window.addEventListener('resize', resize);
-resize();
 
 function createStars(count) {
   stars = [];
@@ -20,7 +20,6 @@ function createStars(count) {
       y: Math.random() * height,
       radius: Math.random() * 1.5 + 0.5,
       alpha: Math.random(),
-      speed: Math.random() * 0.02 + 0.01,
       flicker: Math.random() * 0.02 + 0.01,
     });
   }
@@ -41,11 +40,18 @@ function animateStars() {
   requestAnimationFrame(animateStars);
 }
 
-createStars(300);
+resizeStars();
+window.addEventListener('resize', resizeStars);
 animateStars();
 
 
-// Three.js fog effect
+// ---------------------------
+// 🌫️ Three.js Fog Layer
+// ---------------------------
+const threeCanvas = document.getElementById('threeCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas: threeCanvas, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x0d001a, 0.002);
 
@@ -57,17 +63,15 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.domElement.style.position = 'absolute';
-renderer.domElement.style.top = 0;
-renderer.domElement.style.left = 0;
-renderer.domElement.style.zIndex = 1;
-document.body.appendChild(renderer.domElement);
-
 function animateFog() {
   requestAnimationFrame(animateFog);
   renderer.render(scene, camera);
 }
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 animateFog();
