@@ -1,6 +1,6 @@
-// ---------------------------
-// 🌟 Twinkling Starfield
-// ---------------------------
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
+
+// 🌟 Star Canvas Setup
 const starCanvas = document.getElementById('starCanvas');
 const ctx = starCanvas.getContext('2d');
 let width, height;
@@ -44,10 +44,7 @@ resizeStars();
 window.addEventListener('resize', resizeStars);
 animateStars();
 
-
-// ---------------------------
-// 🌫️ Three.js Fog Layer
-// ---------------------------
+// 🌫️ Three.js Fog Effect
 const threeCanvas = document.getElementById('threeCanvas');
 const renderer = new THREE.WebGLRenderer({ canvas: threeCanvas, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
