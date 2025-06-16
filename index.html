@@ -68,8 +68,8 @@
       
     <!-- Footer -->
     <footer style="
-      
-       text-align: center;
+    
+  text-align: center;
   margin-top: 50px;
   font-size: 0.9em;
   color: #ccc;
@@ -79,25 +79,33 @@
   box-sizing: border-box;
   animation: fadeIn 2s ease-in-out forwards;
   word-wrap: break-word;
+  transition: text-shadow 0.3s ease, color 0.3s ease;
 ">
-      © 2025 Sri Vignesh. All rights reserved.
-    </footer>
+  © 2025 Sri Vignesh. All rights reserved.
+</footer>
 
-    <style>
+<style>
   @keyframes fadeIn {
     to {
       opacity: 1;
     }
   }
 
-   @media (max-width: 600px) {
+  footer:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #bb86fc, 0 0 12px #bb86fc;
+  }
+
+  @media (max-width: 600px) {
     footer {
       font-size: 0.8em;
       padding: 0.5rem;
       margin-top: 30px;
     }
-   }
+  }
 </style>
+dit
+
   </div>
 </div>
 
