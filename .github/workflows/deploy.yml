@@ -1,4 +1,4 @@
-name: 🚀 Deploy Midnight Sky to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -10,13 +10,11 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
 
     steps:
       - name: 📥 Checkout repository
@@ -25,10 +23,11 @@ jobs:
       - name: 🧱 Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: 📦 Upload artifact
+      - name: 📦 Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # This uploads your whole repo
+          path: .
 
       - name: 🚀 Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
